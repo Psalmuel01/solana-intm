@@ -44,4 +44,4 @@ This function demonstrates variable declaration and mutation in Rust. It showcas
 
 ---
 
-To run the example project, execute the `main()` function in the `main.rs` module. This will call the functions from other modules to demonstrate the corresponding Rust concepts. Feel free to modify the values and experiment with different scenarios to deepen your understanding of Rust programming.
+To run the example project, execute the `main()` function in the `main.rs` module. This will call the functions from other modules to demonstrate the corresponding Rust concepts. You can do this by calling `cargo run`. Feel free to modify the values and experiment with different scenarios to deepen your understanding of Rust programming.
