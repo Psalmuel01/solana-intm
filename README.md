@@ -1,4 +1,4 @@
-# Example Project Readme
+# Rust Concepts
 
 This is an example project showcasing various concepts in Rust programming language. The project consists of multiple Rust modules:
 
