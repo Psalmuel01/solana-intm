@@ -4,7 +4,7 @@ The folder contains an Anchor Framework program that is intended for executing t
 
 ## Description
 
-This represents a smart contract developed within the Localnet environment using the Anchor framework. A client program is also supplied to facilitate the testing and interaction with the smart contract.
+This represents a smart contract developed within the devnet environment using the Anchor framework. A client program is also supplied to facilitate the testing and interaction with the smart contract.
 
 ## Getting Started
 
