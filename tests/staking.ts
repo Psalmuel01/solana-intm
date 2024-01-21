@@ -13,7 +13,7 @@ import { expect, use } from "chai";
 import chaiAsPromised from "chai-as-promised";
 use(chaiAsPromised);
 
-describe("staking-program", async () => {
+describe("staking", async () => {
   // Use local cluster.
   anchor.setProvider(anchor.AnchorProvider.env());
   const provider = anchor.AnchorProvider.env();
