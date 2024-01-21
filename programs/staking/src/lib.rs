@@ -9,7 +9,7 @@ use{
 declare_id!("4wNomB8Ncca1ddQTSp9V9L4tV8bkS4nkHHWyMBZSTFNQ");
 
 #[program]
-pub mod staking_program {
+pub mod staking {
     use anchor_spl::token::{mint_to, transfer};
 
     use super::*;
