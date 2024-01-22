@@ -22,7 +22,7 @@ and install yarn if getting error.
 
 `anchor build`
 
-- Deploy (To deploy to Devnet)
+- Deploy
 
 `anchor deploy`
 

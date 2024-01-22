@@ -305,13 +305,10 @@ pub struct StakeNFT<'info> {
         associated_token::authority = user
     )]
     pub user_token_account: Account<'info, TokenAccount>,
-    /// CHECK: Manual validation
     #[account(owner=METADATA_PROGRAM_ID)]
     pub master_edition: UncheckedAccount<'info>,
-    /// CHECK: Manual validation
     #[account(mut, seeds=["authority".as_bytes().as_ref()], bump)]
     pub program_authority: UncheckedAccount<'info>,
-    /// CHECK: Safe because verification through contraint
     #[account(
         constraint = metadata_program.key() == METADATA_PROGRAM_ID
     )]
@@ -327,19 +324,15 @@ pub struct StakingData{
 }
 
 impl <'info> StakeNFT<'info> {
-    // Creates a CPI context for the `approve` instruction.
     pub fn approve_ctx(&self) -> CpiContext<'_, '_, '_, 'info, Approve<'info>> {
-        // Get the token program account info
         let cpi_program = self.token_program.to_account_info();
         
-        // Prepare the CPI accounts structure
         let cpi_accounts = Approve { 
             to: self.user_token_account.to_account_info(),       // Destination token account
             delegate: self.program_authority.to_account_info(),  // Authority being delegated to
             authority: self.user.to_account_info()               // User's authority for approval
         };
 
-        // Create a new CPI context with the prepared program and accounts
         CpiContext::new(cpi_program, cpi_accounts)
     }
 }
@@ -362,17 +355,13 @@ pub struct UnstakeNFT<'info> {
         associated_token::authority = user
     )]
     pub nft_token_account: Account<'info, TokenAccount>,
-    /// CHECK: Manual validation
     #[account(owner=METADATA_PROGRAM_ID)]
     pub master_edition: UncheckedAccount<'info>,
-    /// CHECK: Manual validation
     #[account(mut, seeds=["authority".as_bytes().as_ref()], bump)]
     pub program_authority: UncheckedAccount<'info>,
-    /// CHECK: Safe because verification through contraint
     #[account(mut, seeds = ["token-mint".as_bytes()], bump)]
     pub token_mint: Account<'info, Mint>,
     #[account(mut, seeds = ["mint-authority".as_bytes()], bump)]
-    /// CHECK: using as signer
     pub mint_authority: AccountInfo<'info>,
     #[account(
         init_if_needed,
@@ -381,7 +370,6 @@ pub struct UnstakeNFT<'info> {
         associated_token::authority = user,
     )]
     pub user_token_account: Account<'info, TokenAccount>,
-    /// CHECK: Safe because verification through contraint
     #[account(
         constraint = metadata_program.key() == METADATA_PROGRAM_ID
     )]
@@ -393,34 +381,25 @@ pub struct UnstakeNFT<'info> {
 }
 
 impl <'info> UnstakeNFT<'info> {
-    // Creates a CPI context for the `revoke` instruction.
     pub fn revoke_ctx(&self) -> CpiContext<'_, '_, '_, 'info, Revoke<'info>> {
-        // Get the token program account info
         let cpi_program = self.token_program.to_account_info();
         
-        // Prepare the CPI accounts structure for the `revoke` instruction
         let cpi_accounts = Revoke { 
             source: self.nft_token_account.to_account_info(),  // Source token account to revoke
             authority: self.user.to_account_info()              // User's authority for revoking
         };
 
-        // Create a new CPI context with the prepared program and accounts
         CpiContext::new(cpi_program, cpi_accounts)
     }
 
-    // Creates a CPI context for the `mint_to` instruction.
     pub fn mint_to_ctx(&self) -> CpiContext<'_, '_, '_, 'info, MintTo<'info>> {
-        // Get the token program account info
         let cpi_program = self.token_program.to_account_info();
         
-        // Prepare the CPI accounts structure for the `mint_to` instruction
-        let cpi_accounts = MintTo {
             mint: self.token_mint.to_account_info(),             // Source mint for minting reward
             to: self.user_token_account.to_account_info(),      // Destination token account (user's reward)
             authority: self.mint_authority.to_account_info(),   // Mint authority for reward token
         };
 
-        // Create a new CPI context with the prepared program and accounts
         CpiContext::new(cpi_program, cpi_accounts)
     }
 }
