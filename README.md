@@ -1,51 +1,47 @@
-# Calculator Program
+# Rust Concepts
 
-The Calculator Program, built with Rust on the Solana blockchain framework, offers basic arithmetic functionalities such as addition and subtraction. Users can execute these operations, and the calculated result is stored within a dedicated calculator account.
+This is an example project showcasing various concepts in Rust programming language. The project consists of multiple Rust modules:
 
-## Features
+## `main.rs`
 
-- Addition operation: Adds two numbers and updates result.
-- Subtraction operation: Subtracts one number from another and updates result.
+This is the entry point of the program. It imports and calls functions from other modules to demonstrate different Rust concepts.
 
-## Getting Started
+## `matching.rs`
 
-To use the Calculator Program, you need to have the following:
+This module demonstrates pattern matching in Rust. It includes the following functions:
 
-- Rust programming language and Cargo package manager installed.
-- Solana blockchain environment set up.
+### `matching_examples()`
 
-Follow these steps to run the program:
+This function showcases various examples of pattern matching in Rust. It matches a given number against different patterns and prints corresponding messages.
 
-1. Clone the repository:
+## `slice.rs`
 
-   ```shell
-   git clone <repository-url>
-   ```
+This module demonstrates the usage of arrays and slices in Rust. It contains the following functions:
 
-2. Navigate to the project directory:
+### `analyze_slice(slice: &[i32])`
 
-    ```shell
-    cd calculator
-    ```
+This function borrows a slice of `i32` values and prints information about the slice.
 
-3. Build the program:
+### `slice_example()`
 
-    ```shell
-    cargo build
-    ```
+This function provides examples of working with arrays and slices in Rust. It showcases array initialization, indexing, length retrieval, memory allocation, borrowing arrays as slices, and working with array sections.
 
-4. Testing the program.
-The program includes unit tests to ensure the correctness of the addition and subtraction operations. To run the tests, use the following command:
+## `structs.rs`
 
-    ```shell
-    cargo test
-    ```
+This module showcases the usage of structs in Rust. It defines various struct types and includes the following functions:
 
-## Author
+### `struct_examples()`
 
-[Samuel](https://github.com/psalmuel01)
+This function demonstrates the creation, initialization, and usage of different struct types. It showcases struct instantiation, field access, struct update syntax, struct destructuring, and struct reuse as fields of another struct.
 
-## License
+## `variables.rs`
 
-This project is licensed under the [MIT License](LICENSE).
-You can make a copy of the project to use for your own purposes.
+This module focuses on variables in Rust. It includes the following function:
+
+### `variables_example()`
+
+This function demonstrates variable declaration and mutation in Rust. It showcases how to declare a variable, assign a value to it, and change its value.
+
+---
+
+To run the example project, execute the `main()` function in the `main.rs` module. This will call the functions from other modules to demonstrate the corresponding Rust concepts. You can do this by calling `cargo run`. Feel free to modify the values and experiment with different scenarios to deepen your understanding of Rust programming.
