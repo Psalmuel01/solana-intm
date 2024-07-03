@@ -87,9 +87,9 @@ describe("nft-staking", async () => {
     // Safe airdrop some tokens to the user
     await safeAirdrop(user.publicKey, provider.connection);
 
-    const name = "Uhanmi NFT";
-    const symbol = "UNFT";
-    const uri = "www.uhanmiuri.com";
+    const name = "Psalmuel NFT";
+    const symbol = "PSFT";
+    const uri = "www.psalmuel.com";
 
     // Create and mint the NFT using the program's method
     const txid = await program.methods
